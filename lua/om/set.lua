@@ -1,6 +1,9 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- Options for obsidian plugin
+vim.opt.conceallevel = 2
+
 vim.opt.mousehide = true
 
 vim.opt.tabstop = 4

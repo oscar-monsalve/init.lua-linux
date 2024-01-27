@@ -54,5 +54,11 @@ return require('packer').startup(function(use)
 	    }
     }
 
+    use({
+        "epwalsh/obsidian.nvim",
+        tag = "*",  -- recommended, use latest release instead of latest commitC
+    })
+
+
   end)
 
