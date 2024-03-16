@@ -4,6 +4,9 @@ vim.opt.relativenumber = true
 -- Options for obsidian plugin
 vim.opt.conceallevel = 2
 
+-- Sync clipboard between OS and nvim
+vim.opt.clipboard = "unnamedplus"
+
 vim.opt.mousehide = true
 
 vim.opt.tabstop = 4
@@ -30,7 +33,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
--- vim.opt.colorcolumn = "130"
+vim.opt.colorcolumn = "110"
 
 vim.opt.splitright = false
 
