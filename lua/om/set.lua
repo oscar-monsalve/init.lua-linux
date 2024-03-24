@@ -6,7 +6,6 @@ vim.opt.conceallevel = 2
 
 -- Sync clipboard between OS and nvim
 vim.opt.clipboard = "unnamedplus"
-
 vim.opt.mousehide = true
 
 vim.opt.tabstop = 4
@@ -27,14 +26,16 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
+vim.opt.textwidth = 110
 vim.opt.colorcolumn = "110"
 
 vim.opt.splitright = false
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
