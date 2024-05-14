@@ -6,6 +6,7 @@ vim.opt.conceallevel = 2
 
 -- Sync clipboard between OS and nvim
 vim.opt.clipboard = "unnamedplus"
+
 vim.opt.mousehide = true
 
 vim.opt.tabstop = 4
@@ -32,8 +33,8 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.textwidth = 110
-vim.opt.colorcolumn = "110"
+vim.opt.textwidth = 118
+vim.opt.colorcolumn = "116"
 
 vim.opt.splitright = false
 

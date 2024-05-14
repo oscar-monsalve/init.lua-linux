@@ -27,15 +27,44 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls", "rust_analyzer", 'clangd', 'texlab', 'pylsp', 'arduino_language_server'
-
             },
+
             handlers = {
+
+                arduino_language_server = function()
+                    require('lspconfig').arduino_language_server.setup({
+                        cmd = {
+                            'arduino-language-server',
+                            '-cli-config', '/home/om/.arduino15/arduino-cli.yaml',
+                            --'-cli', '/home/om/bin/arduino-cli',
+                            --'-clangd', '/home/om/.local/share/nvim/mason/bin/clangd',
+                            '-fqbn', 'arduino:avr:nano'
+                        }
+                    })
+                end,
+
                 function(server_name) -- default handler (optional)
 
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
                 end,
+
+                --[[
+                ["arduino_language_server"] = function ()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.arduino_language_server.setup {
+                        cmd = {
+                            'arduino-language-server',
+                            '-cli-config', '/home/om/.arduino15/arduino-cli.yaml',
+                            '-cli', '/home/om/bin/arduino-cli',
+                            '-clangd', '/home/om/.local/share/nvim/mason/bin/clangd',
+                            '-fqbn', 'arduino:avr:nano'
+                        }
+                    }
+
+                end,
+                ]]--
 
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
