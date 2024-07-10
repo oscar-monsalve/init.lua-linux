@@ -26,7 +26,7 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "lua_ls", "rust_analyzer", 'clangd', 'texlab', 'pylsp', 'arduino_language_server'
+                "lua_ls", "rust_analyzer", 'clangd', 'texlab', 'pylsp'
             },
 
             handlers = {
