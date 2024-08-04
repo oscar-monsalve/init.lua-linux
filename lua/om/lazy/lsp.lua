@@ -25,9 +25,11 @@ return {
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = {
-                "lua_ls", "rust_analyzer", 'clangd', 'texlab', 'pylsp'
-            },
+            ensure_installed = {"pylsp", "zls", "marksman"},
+            -- "rust_analyzer"
+            -- "lua_ls"
+            -- 'texlab'
+            -- 'clangd'
 
             handlers = {
 
