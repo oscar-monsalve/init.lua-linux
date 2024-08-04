@@ -2,4 +2,4 @@
 
 Neovim configuration for Ubuntu. Using zsh as terminal.
 
-Package manager : lazy.nvim.
+Package manager : lazy.nvim..
