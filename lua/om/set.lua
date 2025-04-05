@@ -6,6 +6,7 @@ vim.opt.conceallevel = 2
 
 -- Sync clipboard between OS and nvim
 vim.opt.clipboard = "unnamedplus"
+-- vim.opt.cursorlineopt = "number"
 
 vim.opt.mousehide = true
 
