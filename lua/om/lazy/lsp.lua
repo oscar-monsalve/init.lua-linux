@@ -10,6 +10,7 @@ return {
         "hrsh7th/nvim-cmp",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
+        "rafamadriz/friendly-snippets",
         "j-hui/fidget.nvim",
     },
 
@@ -20,53 +21,30 @@ return {
             "force",
             {},
             vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities())
+            cmp_lsp.default_capabilities()
+        )
 
+        require("luasnip.loaders.from_vscode").lazy_load()
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = {"pylsp", "zls", "marksman"},
-            -- "rust_analyzer"
-            -- "lua_ls"
-            -- 'texlab'
-            -- 'clangd'
+            ensure_installed = {
+                "pylsp",
+                "zls",
+                "marksman"
+                -- 'clangd'
+                -- "lua_ls"
+                -- 'texlab'
+                -- "rust_analyzer"
+            },
 
             handlers = {
-
-                arduino_language_server = function()
-                    require('lspconfig').arduino_language_server.setup({
-                        cmd = {
-                            'arduino-language-server',
-                            '-cli-config', '/home/om/.arduino15/arduino-cli.yaml',
-                            --'-cli', '/home/om/bin/arduino-cli',
-                            --'-clangd', '/home/om/.local/share/nvim/mason/bin/clangd',
-                            '-fqbn', 'arduino:avr:nano'
-                        }
-                    })
-                end,
-
                 function(server_name) -- default handler (optional)
-
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
                 end,
 
-                --[[
-                ["arduino_language_server"] = function ()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.arduino_language_server.setup {
-                        cmd = {
-                            'arduino-language-server',
-                            '-cli-config', '/home/om/.arduino15/arduino-cli.yaml',
-                            '-cli', '/home/om/bin/arduino-cli',
-                            '-clangd', '/home/om/.local/share/nvim/mason/bin/clangd',
-                            '-fqbn', 'arduino:avr:nano'
-                        }
-                    }
-
-                end,
-                ]]--
 
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
@@ -84,13 +62,17 @@ return {
             }
         })
 
-        local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
+        local cmp_select = { behavior = cmp.SelectBehavior.Select }
         cmp.setup({
             snippet = {
                 expand = function(args)
                     require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
                 end,
+            },
+            window = {
+                -- completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
             },
             mapping = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
@@ -105,6 +87,7 @@ return {
                 { name = 'buffer' },
             })
         })
+
 
         vim.diagnostic.config({
             virtual_text = true,
