@@ -14,6 +14,7 @@ return {
         "j-hui/fidget.nvim",
     },
 
+
     config = function()
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
@@ -37,14 +38,12 @@ return {
                 -- 'texlab'
                 -- "rust_analyzer"
             },
-
             handlers = {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
                 end,
-
 
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
@@ -64,6 +63,7 @@ return {
 
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
         cmp.setup({
             snippet = {
                 expand = function(args)
@@ -88,7 +88,6 @@ return {
             })
         })
 
-
         vim.diagnostic.config({
             virtual_text = true,
             update_in_insert = false,
@@ -101,6 +100,7 @@ return {
                 prefix = "",
             },
         })
+
 
     end
 }
