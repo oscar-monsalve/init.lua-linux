@@ -57,7 +57,10 @@ return {
                             Lua = {
                                 diagnostics = {
                                     globals = { "vim", "it", "describe", "before_each", "after_each" },
-                                }
+                                },
+                                workspace = {
+                                    library = vim.api.nvim_get_runtime_file("", true),
+                                },
                             }
                         }
                     }
@@ -65,7 +68,6 @@ return {
 
             }
         })
-
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
