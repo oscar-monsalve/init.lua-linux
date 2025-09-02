@@ -1,5 +1,5 @@
-# NeoVim config files
+# Neovim config files
 
-Neovim configuration for Linux (Ubuntu). Using zsh as shell.
+Neovim configuration for Linux.
 
-Package manager : lazy.nvim..
+Package manager : [lazy.nvim](https://github.com/folke/lazy.nvim).
