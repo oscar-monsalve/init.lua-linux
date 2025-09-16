@@ -3,7 +3,7 @@ vim.g.maplocalleader = ","
 
 return {
     "lervag/vimtex",
-    -- lazy = false,  -- we don't want to lazy load VimTex
+    lazy = false,  -- we don't want to lazy load VimTex
 
     init = function()
         -- PDF viewer
@@ -17,7 +17,7 @@ return {
         vim.g["vimtex_quickfix_mode"] = 0
 
         -- Auto Indent
-        vim.g["vimtex_indent_enabled"] = 0
+        vim.g["vimtex_indent_enabled"] = 1
 
         -- Syntax highlighting
         vim.g["vimtex_syntax_enabled"] = 1
@@ -32,6 +32,10 @@ return {
 
         -- Compiler
         vim.g.vimtex_compiler_method = "latexmk"
+        vim.g.vimtex_compiler_latexmk = {
+            aux_dir = "/home/om/.texfiles",
+            -- out_dir = "/home/om/.texfiles",
+        }
 
     end
 }
