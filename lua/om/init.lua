@@ -12,6 +12,21 @@ function R(name)
     require("plenary.reload").reload_module(name)
 end
 
+-- Spell checking
+autocmd("FileType", {
+    pattern = { "markdown", "txt", "env" },
+    callback = function(opts)
+        local cmp = require("cmp")
+        cmp.setup.buffer({ enabled = false })
+        -- fixes spanish spell checking
+        -- vim.opt.spelllang = { "en_us", "es" }
+        vim.opt.spelllang = "en_us"
+        vim.opt.spell = true
+
+        vim.opt.linebreak = true
+    end,
+})
+
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
