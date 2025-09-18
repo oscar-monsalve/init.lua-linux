@@ -20,7 +20,7 @@ autocmd("FileType", {
         cmp.setup.buffer({ enabled = false })
         -- fixes spanish spell checking
         -- vim.opt.spelllang = { "en_us", "es" }
-        vim.opt.spelllang = "en_us"
+        vim.opt.spelllang = "es"
         vim.opt.spell = true
 
         vim.opt.linebreak = true
