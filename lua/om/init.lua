@@ -19,11 +19,32 @@ autocmd("FileType", {
         local cmp = require("cmp")
         cmp.setup.buffer({ enabled = false })
         -- fixes spanish spell checking
-        -- vim.opt.spelllang = { "en_us", "es" }
-        vim.opt.spelllang = "es"
+        vim.opt.spelllang = { "en_us" }
+        -- vim.opt.spelllang = "es"
         vim.opt.spell = true
 
         vim.opt.linebreak = true
+    end,
+})
+
+-- Markview forcibly sets conceallevel=3 via an autocmd.
+-- Remove their autocmd and set conceallevel=2
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*.md",
+    callback = function()
+        -- Remove Markview's conceallevel autocmds
+        local ok, ids = pcall(vim.api.nvim_get_autocmds, {
+            event = "BufEnter",
+            group = "markview",
+        })
+        if ok and ids then
+            for _, id in ipairs(ids) do
+                pcall(vim.api.nvim_del_autocmd, id.id)
+            end
+        end
+
+        -- Force our own conceallevel
+        vim.opt_local.conceallevel = 2
     end,
 })
 
