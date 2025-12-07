@@ -35,11 +35,12 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "pylsp",
-                "zls",
-                "marksman",
                 "clangd",
-                -- "lua_ls"
-                -- 'texlab'
+                "marksman",
+                'texlab'
+                "zls",
+                "lua_ls"
+                'bashls'
                 -- "rust_analyzer"
             },
             handlers = {
