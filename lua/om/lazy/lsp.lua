@@ -37,10 +37,10 @@ return {
                 "pylsp",
                 "clangd",
                 "marksman",
-                'texlab'
+                'texlab',
                 "zls",
-                "lua_ls"
-                'bashls'
+                "lua_ls",
+                'bashls',
                 -- "rust_analyzer"
             },
             handlers = {
