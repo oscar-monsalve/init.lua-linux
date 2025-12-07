@@ -56,11 +56,14 @@ return {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
-                                diagnostics = {
-                                    globals = { "vim", "it", "describe", "before_each", "after_each" },
-                                },
-                                workspace = {
-                                    library = vim.api.nvim_get_runtime_file("", true),
+                                format = {
+                                    enable = true,
+                                    -- Put format options here
+                                    -- NOTE: the value should be STRING!!
+                                    defaultConfig = {
+                                        indent_style = "space",
+                                        indent_size = "4",
+                                    }
                                 },
                             }
                         }
