@@ -33,8 +33,8 @@ return {
         -- Compiler
         vim.g.vimtex_compiler_method = "latexmk"
         vim.g.vimtex_compiler_latexmk = {
-            aux_dir = "/home/om/.texfiles",
-            -- out_dir = "/home/om/.texfiles",
+            -- aux_dir = "/home/om/.texfiles",
+            out_dir = "out",
         }
 
     end
