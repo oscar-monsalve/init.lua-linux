@@ -7,8 +7,10 @@ function Colors(color)
 
     vim.cmd.colorscheme(color)
 
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "black" })
+    -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1f1d2e", fg = "#e0def4" })
+    vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#1f1d2e", fg = "#6e6a86" })
+    vim.api.nvim_set_hl(0, 'Visual', { bg = '#908caa', fg = '#191724' })
 
     -- bg = "black" for pure black background
 	-- vim.api.nvim_set_hl(0, "Normal", { bg = "black" })
