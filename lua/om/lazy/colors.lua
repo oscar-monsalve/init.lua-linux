@@ -12,6 +12,9 @@ function Colors(color)
     vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#1f1d2e", fg = "#6e6a86" })
     vim.api.nvim_set_hl(0, 'Visual', { bg = '#908caa', fg = '#191724' })
 
+    -- Column color
+    vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#403d52"})
+
     -- bg = "black" for pure black background
 	-- vim.api.nvim_set_hl(0, "Normal", { bg = "black" })
 	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "black" })
