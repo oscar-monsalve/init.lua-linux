@@ -83,7 +83,15 @@ return {
             },
             window = {
                 -- completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered(),
+                -- documentation = cmp.config.window.bordered(),
+
+                completion = cmp.config.window.bordered({
+                    border = 'rounded', -- Easier to see than 'single'
+                    -- winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None',
+                }),
+                documentation = cmp.config.window.bordered({
+                    border = 'rounded',
+                }),
             },
             mapping = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),

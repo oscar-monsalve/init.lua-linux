@@ -12,6 +12,12 @@ function R(name)
     require("plenary.reload").reload_module(name)
 end
 
+vim.filetype.add({
+    extension = {
+        templ = 'templ',
+    }
+})
+
 -- Spell checking
 autocmd("FileType", {
     pattern = { "markdown", "txt", "env" },
@@ -65,6 +71,18 @@ autocmd({"BufWritePre"}, {
     command = [[%s/\s\+$//e]],
 })
 
+-- Change the colorscheme based on file extension.
+-- autocmd('BufEnter', {
+--     group = omGroup,
+--     callback = function()
+--         if vim.bo.filetype == "zig" then
+--             pcall(vim.cmd.colorscheme, "tokyonight-night")
+--         else
+--             pcall(vim.cmd.colorscheme, "rose-pine-moon")
+--         end
+--     end
+-- })
+
 autocmd('LspAttach', {
     group = omGroup,
     callback = function(e)
@@ -81,3 +99,8 @@ autocmd('LspAttach', {
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
     end
 })
+
+-- Remove Netrw directory listing when opening nvim in directory
+-- vim.g.netrw_browse_split = 0
+-- vim.g.netrw_banner = 0
+-- vim.g.netrw_winsize = 25
