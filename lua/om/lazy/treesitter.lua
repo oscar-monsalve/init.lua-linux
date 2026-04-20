@@ -25,7 +25,7 @@ return {
 					if vim.bo.buftype ~= "" then
 						return
 					end
-
+                    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 					pcall(vim.treesitter.start, 0)
 				end,
 			})
