@@ -109,7 +109,7 @@ return {
 
         vim.diagnostic.config({
             virtual_text = true,
-            update_in_insert = false,
+            update_in_insert = true,
             float = {
                 focusable = true,
                 style = "minimal",
