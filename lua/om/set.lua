@@ -7,6 +7,10 @@ vim.opt.conceallevel = 2
 -- Sync clipboard between OS and nvim
 vim.opt.clipboard = "unnamedplus"
 -- vim.opt.cursorlineopt = "number"
+--
+-- Enable cursor line highlighting and restrict the highlight to only the line number
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
 
 vim.opt.mousehide = true
 
