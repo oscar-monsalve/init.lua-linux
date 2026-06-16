@@ -25,11 +25,11 @@ autocmd("FileType", {
         local cmp = require("cmp")
         cmp.setup.buffer({ enabled = false })
         -- fixes spanish spell checking
-        vim.opt.spelllang = { "en_us" }
+        vim.opt_local.spelllang = { "en_us" }
         -- vim.opt.spelllang = "es"
-        vim.opt.spell = true
+        vim.opt_local.spell = true
 
-        vim.opt.linebreak = true
+        vim.opt_local.linebreak = true
     end,
 })
 
