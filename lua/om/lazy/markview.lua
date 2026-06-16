@@ -1,6 +1,11 @@
 return {
     "OXY2DEV/markview.nvim",
     lazy = false,
+    opts = {
+        preview = {
+            map_gx = false,
+        },
+    },
 
    -- For `nvim-treesitter` users.
     priority = 49,
