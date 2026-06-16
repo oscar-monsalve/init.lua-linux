@@ -19,17 +19,24 @@ vim.filetype.add({
 })
 
 -- Spell checking
-autocmd("FileType", {
-    pattern = { "markdown", "txt", "env" },
+autocmd({ "FileType", "BufEnter" }, {
+    pattern = "*",
     callback = function(opts)
-        local cmp = require("cmp")
-        cmp.setup.buffer({ enabled = false })
+        if not vim.tbl_contains({ "markdown", "txt", "env" }, vim.bo[opts.buf].filetype) then
+            return
+        end
+
         -- fixes spanish spell checking
         vim.opt_local.spelllang = { "en_us" }
         -- vim.opt.spelllang = "es"
         vim.opt_local.spell = true
 
         vim.opt_local.linebreak = true
+
+        local ok, cmp = pcall(require, "cmp")
+        if ok then
+            cmp.setup.buffer({ enabled = false })
+        end
     end,
 })
 
