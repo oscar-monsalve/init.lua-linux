@@ -8,9 +8,9 @@ vim.opt.conceallevel = 2
 vim.opt.clipboard = "unnamedplus"
 -- vim.opt.cursorlineopt = "number"
 --
--- Enable cursor line highlighting and restrict the highlight to only the line number
-vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number"
+-- Enable cursor line highlighting and restrict the highlight to only the line numberset
+-- vim.opt.cursorline = true
+-- vim.opt.cursorlineopt = "number"
 
 vim.opt.mousehide = true
 
