@@ -41,6 +41,7 @@ return {
                 "zls",
                 "lua_ls",
                 'bashls',
+                "foam_ls",
                 -- "rust_analyzer"
             },
             handlers = {
@@ -69,7 +70,6 @@ return {
                         }
                     }
                 end,
-
             }
         })
 
