@@ -17,6 +17,9 @@ local text_filetypes = {
 }
 
 local text_filetype_lookup = {}
+local nowrap_filetype_lookup = {
+    gnuplot = true,
+}
 
 for _, ft in ipairs(text_filetypes) do
     text_filetype_lookup[ft] = true
@@ -69,6 +72,14 @@ return {
         end
 
         local function apply_text_wrapping()
+            if nowrap_filetype_lookup[vim.bo.filetype] then
+                vim.wo.wrap = false
+                vim.wo.linebreak = false
+                vim.wo.breakindent = false
+                vim.bo.textwidth = 0
+                return
+            end
+
             if not is_text_file() then
                 return
             end
