@@ -15,6 +15,7 @@ end
 vim.filetype.add({
     extension = {
         templ = 'templ',
+        gp = "gnuplot",
     }
 })
 

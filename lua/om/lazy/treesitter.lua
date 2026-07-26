@@ -17,6 +17,7 @@ return {
                 "markdown_inline",
                 "gitignore",
                 "foam",
+                "gnuplot",
 			}
 
 			local group = vim.api.nvim_create_augroup("omTreesitter", { clear = true })
