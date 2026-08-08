@@ -15,11 +15,11 @@ return {
     },
 
     config = function()
-        --- vim.filetype.add({
-        ---     extension = {
-        ---         ino = "cpp", -- or "arduino" if you prefer, as long as clangd is set to match
-        ---     },
-        --- })
+        vim.filetype.add({
+            extension = {
+                ino = "arduino",
+            },
+        })
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
@@ -72,6 +72,21 @@ return {
                 end,
             }
         })
+
+        vim.lsp.config("arduino_language_server", {
+            capabilities = vim.tbl_deep_extend("force", {}, capabilities, {
+                textDocument = { semanticTokens = vim.NIL },
+                workspace = { semanticTokens = vim.NIL },
+            }),
+            cmd = {
+                vim.fn.exepath("arduino-language-server"),
+                "-clangd", vim.fn.exepath("clangd"),
+                "-cli", vim.fn.exepath("arduino-cli"),
+                "-cli-config", vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
+                "-fqbn", "arduino:avr:mega",
+            },
+        })
+        vim.lsp.enable("arduino_language_server")
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
