@@ -83,7 +83,8 @@ return {
                 "-clangd", vim.fn.exepath("clangd"),
                 "-cli", vim.fn.exepath("arduino-cli"),
                 "-cli-config", vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
-                "-fqbn", "arduino:avr:mega",
+                -- "-fqbn", "arduino:avr:mega",  -- Comment or uncomment depending on the board
+                "-fqbn", "esp32:esp32:esp32", -- Comment or uncomment depending on the board
             },
         })
         vim.lsp.enable("arduino_language_server")
