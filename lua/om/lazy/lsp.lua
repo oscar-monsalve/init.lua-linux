@@ -78,6 +78,13 @@ return {
                 textDocument = { semanticTokens = vim.NIL },
                 workspace = { semanticTokens = vim.NIL },
             }),
+            root_dir = function(bufnr, on_dir)
+                local path = vim.api.nvim_buf_get_name(bufnr)
+                if path ~= "" and vim.uv.fs_stat(path) then
+                    on_dir(vim.fs.dirname(path))
+                end
+            end,
+            workspace_required = true,
             cmd = {
                 vim.fn.exepath("arduino-language-server"),
                 "-clangd", vim.fn.exepath("clangd"),
@@ -88,6 +95,25 @@ return {
             },
         })
         vim.lsp.enable("arduino_language_server")
+
+        vim.api.nvim_create_autocmd("BufWritePost", {
+            group = vim.api.nvim_create_augroup("ArduinoLsp", { clear = true }),
+            pattern = "*.ino",
+            callback = function(event)
+                if #vim.lsp.get_clients({ bufnr = event.buf, name = "arduino_language_server" }) == 0 then
+                    local bufnr = event.buf
+                    vim.schedule(function()
+                        if not vim.api.nvim_buf_is_valid(bufnr) then
+                            return
+                        end
+
+                        local config = vim.deepcopy(vim.lsp.config.arduino_language_server)
+                        config.root_dir = vim.fs.dirname(vim.api.nvim_buf_get_name(bufnr))
+                        vim.lsp.start(config, { bufnr = bufnr })
+                    end)
+                end
+            end,
+        })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
