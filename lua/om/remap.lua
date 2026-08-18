@@ -11,10 +11,10 @@ vim.keymap.set("n", "<leader>sp", function()
 end)
 
 -- Resize windows with arrows
+vim.keymap.set("n", "<C-Left>", ":vertical resize +2<CR>")
+vim.keymap.set("n", "<C-Right>", ":vertical resize -2<CR>")
 vim.keymap.set("n", "<C-Up>", ":resize +2<CR>")
 vim.keymap.set("n", "<C-Down>", ":resize -2<CR>")
-vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
-vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Remap j/k to navigate wrapped lines naturally
 -- If no count is given (e.g. 5j), move by visual line (gj/gk)
