@@ -10,6 +10,8 @@ return {
 				"vimdoc",
                 "python",
                 "c",
+                "cpp",
+                "arduino",
                 "zig",
                 "bash",
                 "latex",
