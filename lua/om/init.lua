@@ -19,6 +19,27 @@ vim.filetype.add({
     }
 })
 
+local code_nowrap_filetypes = {
+    c = true,
+    cpp = true,
+    gnuplot = true,
+}
+
+autocmd({ "FileType", "BufEnter" }, {
+    pattern = "*",
+    callback = function(opts)
+        if not code_nowrap_filetypes[vim.bo[opts.buf].filetype] then
+            return
+        end
+
+        vim.wo.wrap = false
+        vim.wo.linebreak = false
+        vim.wo.breakindent = false
+        vim.bo[opts.buf].textwidth = 0
+        vim.opt_local.formatoptions:remove({ "t", "c", "a" })
+    end,
+})
+
 -- Spell checking
 autocmd({ "FileType", "BufEnter" }, {
     pattern = "*",
